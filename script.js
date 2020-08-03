@@ -49,17 +49,29 @@ document.getElementById('calc-body').addEventListener('click', function(event) {
     }
 })
 
+function updateTryLeft() {
+    const tryLeft = document.getElementById('try-left');
+    let tryLeftNumber = parseInt(tryLeft.innerText);
+    tryLeftNumber--;
+    tryLeft.innerText = tryLeftNumber;
+    if(tryLeftNumber == 0) {
+        document.getElementById('submit').disabled = true;
+    }
+}
+
 // event handler on submit button
 document.getElementById('submit').addEventListener('click', function() {
     const generatedPin = document.getElementById('generated-pin').value;;
     const inputPin = document.getElementById('input-pin').value;
 
-    if(generatedPin === inputPin && generatedPin != "") {
+    if(generatedPin == inputPin) {
         document.getElementById('pin-matched').style.display = "block";
         document.getElementById('pin-not-matched').style.display = "none";
     }
-    if(generatedPin !== inputPin && generatedPin != "") {
+    else {
         document.getElementById('pin-matched').style.display = "none";
         document.getElementById('pin-not-matched').style.display = "block";
+
+        updateTryLeft();
     }
 })
