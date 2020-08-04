@@ -64,7 +64,13 @@ document.getElementById('submit').addEventListener('click', function() {
     const generatedPin = document.getElementById('generated-pin').value;;
     const inputPin = document.getElementById('input-pin').value;
 
-    if(generatedPin == inputPin) {
+    if(generatedPin == "") {
+        alert('Pin is not Generated yet !!');
+    }
+    else if(inputPin == "") {
+        alert('Input your pin !!');
+    }
+    else if(generatedPin == inputPin) {
         document.getElementById('pin-matched').style.display = "block";
         document.getElementById('pin-not-matched').style.display = "none";
     }
